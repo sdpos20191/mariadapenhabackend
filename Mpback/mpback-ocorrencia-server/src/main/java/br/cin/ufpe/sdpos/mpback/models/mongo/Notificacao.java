@@ -1,6 +1,6 @@
 package br.cin.ufpe.sdpos.mpback.models.mongo;
 
-import br.cin.ufpe.sdpos.mpback.models.Status;
+import br.cin.ufpe.sdpos.mpback.models.common.Status;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

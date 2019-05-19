@@ -1,7 +1,7 @@
 package br.cin.ufpe.sdpos.mpback.controllers;
 
 import br.cin.ufpe.sdpos.mpback.models.mongo.Ocorrencia;
-import br.cin.ufpe.sdpos.mpback.repositories.mongo.OcorrenciaRepository;
+import br.cin.ufpe.sdpos.mpback.repositories.mongo.OcorrenciaMongoDBRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class OcorrenciaController {
 
     @Autowired
-    private OcorrenciaRepository repository;
+    private OcorrenciaMongoDBRepository repository;
 
     @GetMapping(value = "/ocorrencias")
     public List<Ocorrencia> listar(){

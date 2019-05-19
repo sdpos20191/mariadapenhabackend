@@ -1,14 +1,13 @@
 package br.cin.ufpe.sdpos.mpback.models.jpa;
 
 import br.cin.ufpe.sdpos.mpback.models.common.Status;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
-@Entity
+@Entity(name = "tb_notificacao")
 public class NotificacaoEntity {
     @Id
     @GeneratedValue

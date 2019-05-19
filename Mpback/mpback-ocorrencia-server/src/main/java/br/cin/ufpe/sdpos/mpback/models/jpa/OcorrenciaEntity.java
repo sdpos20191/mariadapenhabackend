@@ -1,30 +1,31 @@
 package br.cin.ufpe.sdpos.mpback.models.jpa;
 
 import br.cin.ufpe.sdpos.mpback.models.mongo.Dispositivo;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity(name = "tb_ocorrencia")
 public class OcorrenciaEntity {
 
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
+    @OneToOne
     private LocalizacaoEntity localizacao;
     private Date dataHora;
-    private Dispositivo dispositivo;
+    @ManyToOne
+    private DispositivoEntity dispositivo;
+    @OneToMany
     private List<NotificacaoEntity> notificaoes;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -44,11 +45,11 @@ public class OcorrenciaEntity {
         this.dataHora = dataHora;
     }
 
-    public Dispositivo getDispositivo() {
+    public DispositivoEntity getDispositivo() {
         return dispositivo;
     }
 
-    public void setDispositivo(Dispositivo dispositivo) {
+    public void setDispositivo(DispositivoEntity dispositivo) {
         this.dispositivo = dispositivo;
     }
 

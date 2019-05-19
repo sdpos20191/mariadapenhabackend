@@ -1,13 +1,15 @@
 package br.cin.ufpe.sdpos.mpback.models.jpa;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.sql.Timestamp;
 import java.util.Date;
 
-@Entity
+@Entity(name = "tb_localizacao")
 public class LocalizacaoEntity {
 
     @Id
@@ -15,7 +17,8 @@ public class LocalizacaoEntity {
     private Long id;
     private long latitude;
     private long longitude;
-    private Date dataHora;
+    @Column(name = "dataHora")
+    private Timestamp dataHora;
 
     public Long getId() {
         return id;
@@ -41,11 +44,11 @@ public class LocalizacaoEntity {
         this.longitude = longitude;
     }
 
-    public Date getDataHora() {
+    public Timestamp getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(Date dataHora) {
+    public void setDataHora(Timestamp dataHora) {
         this.dataHora = dataHora;
     }
 }
