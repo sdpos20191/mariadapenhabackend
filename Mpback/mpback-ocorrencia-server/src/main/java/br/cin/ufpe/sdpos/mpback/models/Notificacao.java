@@ -1,17 +1,22 @@
-package br.cin.ufpe.sdpos.mpback.model;
+package br.cin.ufpe.sdpos.mpback.models;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
 
+@Document(collection = "notificacoes")
 public class Notificacao {
-    private long id;
+    @Id
+    private String id;
     private Date dataHora;
     private Status status;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -1,22 +1,26 @@
-package br.cin.ufpe.sdpos.mpback.model;
+package br.cin.ufpe.sdpos.mpback.models;
 
-import javax.persistence.Entity;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Document(collection = "ocrrencias")
 public class Ocorrencia {
-    private long id;
+
+    @Id
+    private String id;
     private Localizacao localizacao;
     private Date dataHora;
     private Dispositivo dispositivo;
     private List<Notificacao> notificaoes;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

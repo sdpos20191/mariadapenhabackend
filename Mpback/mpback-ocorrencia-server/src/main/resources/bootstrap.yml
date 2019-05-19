@@ -4,6 +4,13 @@ spring:
   cloud:
     config:
       uri: http://localhost:9090
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: mpback_db
+      username: root
+      password: root
 eureka:
   client:
     serviceUrl:
