@@ -1,14 +1,16 @@
-package br.cin.ufpe.sdpos.mpback.controllers;
+package br.cin.ufpe.sdpos.mpback.controllers.mongo;
 
 import br.cin.ufpe.sdpos.mpback.models.mongo.Dispositivo;
 import br.cin.ufpe.sdpos.mpback.repositories.mongo.DispositivoMongoDBRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.Path;
 import java.util.List;
 
 @RestController
-public class DispositivoController {
+@Path(value = "/mongo/")
+public class DispositivoMongoController {
 
     @Autowired
     private DispositivoMongoDBRepository repository;
