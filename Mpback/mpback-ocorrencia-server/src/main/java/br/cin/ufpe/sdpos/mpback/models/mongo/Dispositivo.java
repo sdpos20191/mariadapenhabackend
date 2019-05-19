@@ -1,4 +1,4 @@
-package br.cin.ufpe.sdpos.mpback.models;
+package br.cin.ufpe.sdpos.mpback.models.mongo;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

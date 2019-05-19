@@ -1,7 +1,7 @@
 package br.cin.ufpe.sdpos.mpback.controllers;
 
-import br.cin.ufpe.sdpos.mpback.models.Ocorrencia;
-import br.cin.ufpe.sdpos.mpback.repositories.OcorrenciaRepository;
+import br.cin.ufpe.sdpos.mpback.models.mongo.Ocorrencia;
+import br.cin.ufpe.sdpos.mpback.repositories.mongo.OcorrenciaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

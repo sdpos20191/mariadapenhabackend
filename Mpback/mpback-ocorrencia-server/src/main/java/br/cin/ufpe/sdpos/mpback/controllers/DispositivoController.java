@@ -1,9 +1,7 @@
 package br.cin.ufpe.sdpos.mpback.controllers;
 
-import br.cin.ufpe.sdpos.mpback.models.Dispositivo;
-import br.cin.ufpe.sdpos.mpback.models.Notificacao;
-import br.cin.ufpe.sdpos.mpback.repositories.DispositivoRepository;
-import br.cin.ufpe.sdpos.mpback.repositories.NotificacaoRepository;
+import br.cin.ufpe.sdpos.mpback.models.mongo.Dispositivo;
+import br.cin.ufpe.sdpos.mpback.repositories.mongo.DispositivoMongoDBRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +11,7 @@ import java.util.List;
 public class DispositivoController {
 
     @Autowired
-    private DispositivoRepository repository;
+    private DispositivoMongoDBRepository repository;
 
     @GetMapping(value = "/dispositivos")
     public List<Dispositivo> listar(){

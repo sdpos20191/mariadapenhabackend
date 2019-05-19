@@ -1,24 +1,27 @@
-package br.cin.ufpe.sdpos.mpback.models;
+package br.cin.ufpe.sdpos.mpback.models.jpa;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import java.util.Date;
 
-@Document(collection = "localizacoes")
-public class Localizacao {
+@Entity
+public class LocalizacaoEntity {
 
     @Id
-    private String id;
+    @GeneratedValue
+    private Long id;
     private long latitude;
     private long longitude;
     private Date dataHora;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

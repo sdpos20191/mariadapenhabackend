@@ -1,22 +1,26 @@
-package br.cin.ufpe.sdpos.mpback.models;
+package br.cin.ufpe.sdpos.mpback.models.jpa;
 
+import br.cin.ufpe.sdpos.mpback.models.common.Status;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import java.util.Date;
 
-@Document(collection = "notificacoes")
-public class Notificacao {
+@Entity
+public class NotificacaoEntity {
     @Id
-    private String id;
+    @GeneratedValue
+    private Long id;
     private Date dataHora;
     private Status status;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
