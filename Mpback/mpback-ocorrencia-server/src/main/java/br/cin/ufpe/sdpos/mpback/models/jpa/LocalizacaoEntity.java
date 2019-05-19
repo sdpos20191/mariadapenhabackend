@@ -18,7 +18,7 @@ public class LocalizacaoEntity {
     private long latitude;
     private long longitude;
     @Column(name = "dataHora")
-    private Timestamp dataHora;
+    private Date dataHora;
 
     public Long getId() {
         return id;
@@ -44,11 +44,11 @@ public class LocalizacaoEntity {
         this.longitude = longitude;
     }
 
-    public Timestamp getDataHora() {
+    public Date getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(Timestamp dataHora) {
+    public void setDataHora(Date dataHora) {
         this.dataHora = dataHora;
     }
 }
