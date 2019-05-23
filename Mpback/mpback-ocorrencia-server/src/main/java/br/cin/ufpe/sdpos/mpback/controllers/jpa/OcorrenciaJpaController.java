@@ -3,6 +3,7 @@ package br.cin.ufpe.sdpos.mpback.controllers.jpa;
 import br.cin.ufpe.sdpos.mpback.models.jpa.OcorrenciaEntity;
 import br.cin.ufpe.sdpos.mpback.repositories.jpa.OcorrenciaJPARepository;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class OcorrenciaJpaController {
                     response = OcorrenciaEntity.class)
     )
     @GetMapping(value = "/jpa/ocorrencias/{id}")
-    public @ResponseBody ResponseEntity<OcorrenciaEntity> obterPorId(@PathVariable("id") Long id){
+    public @ResponseBody ResponseEntity<OcorrenciaEntity> obterPorId(@ApiParam @PathVariable("id") Long id){
         return new ResponseEntity<>(jpaRepository.findOne(id), HttpStatus.OK);
     }
 
@@ -53,7 +54,7 @@ public class OcorrenciaJpaController {
                      response = OcorrenciaEntity.class)
     )
     @PostMapping(value="/jpa/ocorrencias")
-    public @ResponseBody ResponseEntity<OcorrenciaEntity> salvar(@RequestBody OcorrenciaEntity ocorrencia){
+    public @ResponseBody ResponseEntity<OcorrenciaEntity> salvar(@ApiParam @RequestBody OcorrenciaEntity ocorrencia){
         OcorrenciaEntity savedEntity = jpaRepository.save(ocorrencia);
         return new ResponseEntity<>(savedEntity, HttpStatus.OK);
     }
@@ -67,7 +68,7 @@ public class OcorrenciaJpaController {
                     response = OcorrenciaEntity.class)
     )
     @PutMapping(value = "/jpa/ocorrencias/{id}")
-    public @ResponseBody ResponseEntity<OcorrenciaEntity> atualizar(@PathVariable("id") Long id,
+    public @ResponseBody ResponseEntity<OcorrenciaEntity> atualizar(@ApiParam @PathVariable("id") Long id,
                                       @RequestBody OcorrenciaEntity ocorrencia){
         OcorrenciaEntity updated = jpaRepository.save(ocorrencia);
         return new ResponseEntity<>(updated, HttpStatus.OK);
