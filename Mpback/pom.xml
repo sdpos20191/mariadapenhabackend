@@ -5,7 +5,7 @@
 	
 	<groupId>br.cin.ufpe.sdpos</groupId>
 	<artifactId>mpback</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>mpback</name>
 	<description>Backend do botao maria da penha</description>
