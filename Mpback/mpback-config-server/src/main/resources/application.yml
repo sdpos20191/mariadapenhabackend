@@ -6,4 +6,4 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/leandrooguit/mpback-ufpe-configs
+          uri: https://github.com/sdpos20191/mpback-ufpe-configs

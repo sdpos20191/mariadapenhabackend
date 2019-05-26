@@ -1,8 +1,8 @@
 .idea/*
+.idea/compiler.xml
+.idea/encodings.xml
 */.project
 */.settings
-Mpback/mpback-config-server/target/
-Mpback/mpback-eureka-server/target/
-Mpback/mpback-ocorrencia-server/target/
+Mpback/*/target
 Mpback/target
 Mpback/.idea

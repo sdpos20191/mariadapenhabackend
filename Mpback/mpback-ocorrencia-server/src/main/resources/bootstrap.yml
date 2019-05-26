@@ -1,29 +1,6 @@
-server:
-  port: 8080
 spring:
   application:
     name: mpback-ocorrencia-server
   cloud:
     config:
       uri: http://localhost:9090
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-  h2:
-    console:
-      enabled: true
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-#  data:
-#    mongodb:
-#      host: 127.0.0.1
-#      port: 27017
-#      database: mpback_db
-#      username: root
-#      password: root
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka

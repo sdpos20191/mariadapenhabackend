@@ -19,6 +19,7 @@
       	<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
       	<java.version>1.8</java.version>
 		<spring-cloud.version>Dalston.SR1</spring-cloud.version>
+		<jwt.version>0.9.1</jwt.version>
 	</properties>
 
 	<dependencies>
@@ -91,6 +92,10 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.8</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 	</dependencies>
 	
