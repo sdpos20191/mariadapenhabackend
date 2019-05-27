@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @SpringBootApplication
 @EnableDiscoveryClient
-//@EnableMongoRepositories("br.cin.ufpe.sdpos.mpback.repositories")
+@EnableMongoRepositories("br.cin.ufpe.sdpos.mpback.repositories.mongo")
 public class MpbackOcorrenciaServerApplication {
 
 	public static void main(String[] args) {
