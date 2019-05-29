@@ -30,6 +30,7 @@
         <module>mpback-eureka-server</module>
         <module>mpback-config-server</module>
 		<module>mpback-ocorrencia-server</module>
+		<module>mpback-notificacao-server</module>
     </modules>
 
 </project>
