@@ -27,5 +27,13 @@ services:
       - 8080
     networks:
       - mpback
+  mongodb:
+    build:
+      image: tutum/mongodb
+      ports:
+        - 27017
+        - 28017
+    environment:
+      - AUTH: no
 networks:
   mpback:
