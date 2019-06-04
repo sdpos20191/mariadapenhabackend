@@ -2,6 +2,8 @@ package br.cin.ufpe.sdpos.mpback.models.jpa;
 
 import br.cin.ufpe.sdpos.mpback.models.mongo.Dispositivo;
 import lombok.Data;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
@@ -21,6 +23,7 @@ class OcorrenciaEntity {
     @ManyToOne
     private DispositivoEntity dispositivo;
     @OneToMany
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<NotificacaoEntity> notificaoes;
 
 }

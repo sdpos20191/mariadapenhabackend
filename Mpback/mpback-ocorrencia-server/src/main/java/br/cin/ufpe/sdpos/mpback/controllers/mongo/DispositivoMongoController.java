@@ -1,5 +1,6 @@
 package br.cin.ufpe.sdpos.mpback.controllers.mongo;
 
+import br.cin.ufpe.sdpos.mpback.models.ApisVersion;
 import br.cin.ufpe.sdpos.mpback.models.mongo.Dispositivo;
 import br.cin.ufpe.sdpos.mpback.repositories.mongo.DispositivoMongoDBRepository;
 import io.swagger.annotations.ApiOperation;
@@ -13,7 +14,7 @@ import javax.ws.rs.Path;
 import java.util.List;
 
 @RestController
-@Path(value = "/mongo/")
+@RequestMapping(ApisVersion.V1)
 public class DispositivoMongoController {
 
     @Autowired
