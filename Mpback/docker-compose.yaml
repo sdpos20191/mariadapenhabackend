@@ -1,23 +1,27 @@
 version: "3.7"
 services:
+  eureka:
+    build:
+      context: ./mpback-eureka-server
+      dockerfile: Dockerfile
+    hostname: eureka
+    ports:
+      - "9091:9091"
+    networks:
+      - mpback
   config:
     build:
       context: ./mpback-config-server
       dockerfile: Dockerfile
     ports:
-      - 9090:9090
-    networks:
-      - mpback
-  eureka:
-    build:
-      context: ./mpback-eureka-server
-      dockerfile: Dockerfile
+      - "9090:9090"
     depends_on:
-      - config
-    ports:
-      - 9091:9091
+      - eureka
     networks:
       - mpback
+    environment:
+      EUREKA_HOST: eureka
+      EUREKA_PORT: 9091
   gateway:
     build:
       context: ./mpback-gateway-server
@@ -26,28 +30,36 @@ services:
       - config
       - eureka
     ports:
-      - 9094:9094
+      - "9094:9094"
     networks:
       - mpback
+    environment:
+      EUREKA_HOST: eureka
+      EUREKA_PORT: 9091
   mongodb:
     image: mongo:3.4.20-xenial
     ports:
-      - 27017:27017
-      - 28017:28017
+      - "27017:27017"
+      - "28017:28017"
     depends_on:
       - eureka
     restart: always
     networks:
       - mpback
+    environment:
+      EUREKA_HOST: eureka
+      EUREKA_PORT: 9091
   mongo-express:
     image: mongo-express
     ports:
-      - 8081:8081
+      - "8081:8081"
     depends_on:
       - mongodb
     restart: always
     environment:
       ME_CONFIG_MONGODB_SERVER: mongodb
+      EUREKA_HOST: eureka
+      EUREKA_PORT: 9091
     networks:
       - mpback
   ocorrencia-server:
@@ -58,8 +70,11 @@ services:
       - eureka
       - config
     ports:
-      - 9093:9093
+      - "9093:9093"
     networks:
       - mpback
+    environment:
+      EUREKA_HOST: eureka
+      EUREKA_PORT: 9091
 networks:
   mpback:
