@@ -27,6 +27,8 @@ services:
       - eureka
     ports:
       - 9094:9094
+    networks:
+      - mpback
   mongodb:
     image: mongo:3.4.20-xenial
     ports:
