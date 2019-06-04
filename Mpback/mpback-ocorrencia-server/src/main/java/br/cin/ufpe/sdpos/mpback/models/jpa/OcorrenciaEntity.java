@@ -1,10 +1,6 @@
 package br.cin.ufpe.sdpos.mpback.models.jpa;
 
-import br.cin.ufpe.sdpos.mpback.models.mongo.Dispositivo;
 import lombok.Data;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,15 +11,19 @@ public @Data
 class OcorrenciaEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
+    
+    @OneToOne(cascade = CascadeType.ALL)
     private LocalizacaoEntity localizacao;
+    
+    @Temporal(value=TemporalType.TIMESTAMP)
     private Date dataHora;
-    @ManyToOne
+    
+    @ManyToOne(cascade = CascadeType.ALL)
     private DispositivoEntity dispositivo;
-    @OneToMany
-    @LazyCollection(LazyCollectionOption.FALSE)
+    
+    @OneToMany(mappedBy = "ocorrencia", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<NotificacaoEntity> notificaoes;
 
 }
