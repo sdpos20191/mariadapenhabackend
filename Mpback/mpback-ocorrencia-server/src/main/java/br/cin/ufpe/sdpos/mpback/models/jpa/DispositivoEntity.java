@@ -8,12 +8,17 @@ import java.util.List;
 
 @Entity(name = "tb_dispositivo")
 public @Data class DispositivoEntity {
+	
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @Temporal(value=TemporalType.DATE)
     private Date dataCadastro;
-    @OneToOne
+    
+    @OneToOne(cascade = CascadeType.ALL)
     private LocalizacaoEntity atual;
-    @OneToMany
+    
+    @OneToMany(mappedBy = "dispositivo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<NotificacaoEntity> notificacoes;
 }

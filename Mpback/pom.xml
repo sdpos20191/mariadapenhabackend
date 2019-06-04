@@ -26,7 +26,6 @@
 
     <modules>
         <module>mpback-gateway-server</module>
-		<module>mpback-ocorrencia-dashboard-server</module>
         <module>mpback-eureka-server</module>
         <module>mpback-config-server</module>
 		<module>mpback-ocorrencia-server</module>
