@@ -1,42 +1,50 @@
-version: 3.7
+version: "3.7"
 services:
   config:
     build:
-      context: ./
-      dockerfile: mpback-config-server/Dockerfile
+      context: ./mpback-config-server
+      dockerfile: Dockerfile
     ports:
-      - 9090
+      - 9090:9090
     networks:
       - mpback
   eureka:
     build:
-      context: ./
-      dockerfile: mpback-eureka-server/Dockerfile
+      context: ./mpback-eureka-server
+      dockerfile: Dockerfile
     depends_on:
       - config
     ports:
-      - 8761
+      - 9091:9091
     networks:
       - mpback
   mongodb:
-    build:
-      image: tutum/mongodb
-      ports:
-        - 27017
-        - 28017
+    image: mongo:3.4.20-xenial
+    ports:
+      - 27017:27017
+      - 28017:28017
     depends_on:
       - eureka
+    restart: always
+  mongo-express:
+    image: mongo-express
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongodb
+    restart: always
     environment:
-      - AUTH: no
+      ME_CONFIG_MONGODB_SERVER: mongodb
   ocorrencia-server:
     build:
-      context: ./
-      dockerfile: mpback-ocorrencia-server/Dockerfile
+      context: ./mpback-ocorrencia-server
+      dockerfile: Dockerfile
     depends_on:
       - eureka
       - config
     ports:
-      - 8080
+      - 8080:8080
+      - 9093:9093
     networks:
       - mpback
 networks:
