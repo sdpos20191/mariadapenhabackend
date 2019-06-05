@@ -9,9 +9,6 @@ services:
         condition: on-failure
     networks:
       - mpback
-    environment:
-      EUREKA_HOST: eureka
-      EUREKA_PORT: 9091
   eureka-server:
     image: mpback_eureka
     depends_on:
@@ -36,9 +33,6 @@ services:
       - "9094:9094"
     networks:
       - mpback
-    environment:
-      EUREKA_HOST: eureka
-      EUREKA_PORT: 9091
   mongodb:
     image: mongo:3.4.20-xenial
     ports:
@@ -49,9 +43,6 @@ services:
         condition: on-failure
     networks:
       - mpback
-    environment:
-      EUREKA_HOST: eureka
-      EUREKA_PORT: 9091
   mongo-express:
     image: mongo-express
     ports:
@@ -61,8 +52,6 @@ services:
         condition: on-failure
     environment:
       ME_CONFIG_MONGODB_SERVER: mongodb
-      EUREKA_HOST: eureka
-      EUREKA_PORT: 9091
     networks:
       - mpback
   ocorrencia-server:
@@ -77,8 +66,15 @@ services:
         condition: on-failure
     networks:
       - mpback
-    environment:
-      EUREKA_HOST: eureka
-      EUREKA_PORT: 9091
+  rabbitmq:
+    image: rabbitmq:3.7.15
+    ports:
+      - "5672:5672"
+    deploy:
+      restart_policy:
+        condition: on-failure
+    networks:
+      - mpback
+
 networks:
   mpback:
