@@ -12,7 +12,7 @@ import br.cin.ufpe.sdpos.model.OcorrenciaDtoInfo;
 @FeignClient(name = "mpback-ocorrencia-server", url = "http://ocorrencia-server:9093")
 public interface OcorrenciaServiceProxy {
 
-	@GetMapping(value = "/jpa/ocorrencias")
+	@GetMapping(value = "/api/v1/jpa/ocorrencias")
 	public ResponseEntity<List<OcorrenciaDtoInfo>> listar();
 	
 }
