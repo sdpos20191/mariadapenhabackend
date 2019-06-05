@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.cin.ufpe.sdpos.model.OcorrenciaDtoInfo;
 
-@FeignClient(name = "mpback-ocorrencia-server", url = "http://ocorrencia-server:9093)
+@FeignClient(name = "mpback-ocorrencia-server", url = "http://ocorrencia-server:9093")
 public interface OcorrenciaServiceProxy {
 
 	@GetMapping(value = "/jpa/ocorrencias")
