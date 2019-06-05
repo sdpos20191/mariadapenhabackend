@@ -1,6 +1,8 @@
 package br.cin.ufpe.sdpos.mpback.models.jpa;
 
 import lombok.Data;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -23,7 +25,8 @@ class OcorrenciaEntity {
     @ManyToOne(cascade = CascadeType.ALL)
     private DispositivoEntity dispositivo;
     
-    @OneToMany(mappedBy = "ocorrencia", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "ocorrencia", cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<NotificacaoEntity> notificaoes;
 
 }
