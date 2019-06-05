@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  config:
+  config-server:
     image: mpback_config
     ports:
       - "9090:9090"
@@ -12,7 +12,7 @@ services:
     environment:
       EUREKA_HOST: eureka
       EUREKA_PORT: 9091
-  eureka:
+  eureka-server:
     image: mpback_eureka
     depends_on:
       - config
@@ -24,7 +24,7 @@ services:
         condition: on-failure
     networks:
       - mpback
-  gateway:
+  gateway-server:
     image: mpback_gateway
     depends_on:
       - config

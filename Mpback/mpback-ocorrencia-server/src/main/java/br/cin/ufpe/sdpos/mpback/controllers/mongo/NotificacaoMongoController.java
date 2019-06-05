@@ -1,17 +1,23 @@
 package br.cin.ufpe.sdpos.mpback.controllers.mongo;
 
-import br.cin.ufpe.sdpos.mpback.models.mongo.Dispositivo;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.cin.ufpe.sdpos.mpback.models.ApisVersion;
 import br.cin.ufpe.sdpos.mpback.models.mongo.Notificacao;
 import br.cin.ufpe.sdpos.mpback.repositories.mongo.NotificacaoMongoDBRepository;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import javax.ws.rs.Path;
-import java.util.List;
 
 @RestController
 @RequestMapping(ApisVersion.V1)
