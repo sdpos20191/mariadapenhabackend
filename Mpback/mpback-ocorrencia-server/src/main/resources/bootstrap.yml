@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mpback-ocorrencia-server
+    name: ocorrencia-server
   cloud:
     config:
-      uri: http://config:9090
+      uri: http://config-server:9090

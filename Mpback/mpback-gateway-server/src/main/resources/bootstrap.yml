@@ -1,6 +1,6 @@
 spring:
   application:
-    name: mpback-gateway-server
+    name: gateway-server
   cloud:
     config:
-      uri: http://config:9090
+      uri: http://config-server:9090
