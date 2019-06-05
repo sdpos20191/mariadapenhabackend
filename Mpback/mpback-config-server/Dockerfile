@@ -5,5 +5,5 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 
 FROM openjdk:8-jdk-alpine
 COPY --from=build /usr/src/app/target/config-server.jar /usr/app/config-server.jar
-EXPOSE 9091
+EXPOSE 9090
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/usr/app/config-server.jar"]
