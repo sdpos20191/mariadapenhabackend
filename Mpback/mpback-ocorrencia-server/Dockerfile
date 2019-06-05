@@ -5,6 +5,5 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 
 FROM openjdk:8-jdk-alpine
 COPY --from=build /usr/src/app/target/mpback-ocorrencia-server.jar /usr/app/mpback-ocorrencia-server.jar
-EXPOSE 8080
 EXPOSE 9093
 ENTRYPOINT ["java","-jar","/usr/app/mpback-ocorrencia-server.jar"]
