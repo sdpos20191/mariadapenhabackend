@@ -1,0 +1,84 @@
+version: "3.7"
+services:
+  config:
+    image: mpback_config
+    ports:
+      - "9090:9090"
+    deploy:
+      restart_policy:
+        condition: on-failure
+    networks:
+      - mpback
+    environment:
+      EUREKA_HOST: eureka
+      EUREKA_PORT: 9091
+  eureka:
+    image: mpback_eureka
+    depends_on:
+      - config
+    hostname: eureka
+    ports:
+      - "9091:9091"
+    deploy:
+      restart_policy:
+        condition: on-failure
+    networks:
+      - mpback
+  gateway:
+    image: mpback_gateway
+    depends_on:
+      - config
+      - eureka
+    deploy:
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "9094:9094"
+    networks:
+      - mpback
+    environment:
+      EUREKA_HOST: eureka
+      EUREKA_PORT: 9091
+  mongodb:
+    image: mongo:3.4.20-xenial
+    ports:
+      - "27017:27017"
+      - "28017:28017"
+    deploy:
+      restart_policy:
+        condition: on-failure
+    networks:
+      - mpback
+    environment:
+      EUREKA_HOST: eureka
+      EUREKA_PORT: 9091
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      EUREKA_HOST: eureka
+      EUREKA_PORT: 9091
+    networks:
+      - mpback
+  ocorrencia-server:
+    image: mpback_ocorrencia-server
+    depends_on:
+      - eureka
+      - config
+    ports:
+      - "9093:9093"
+    deploy:
+      restart_policy:
+        condition: on-failure
+    networks:
+      - mpback
+    environment:
+      EUREKA_HOST: eureka
+      EUREKA_PORT: 9091
+networks:
+  mpback:
