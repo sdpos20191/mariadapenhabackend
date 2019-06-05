@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 import java.util.List;
 
-@Document(collection = "ocrrencias")
+@Document(collection = "ocorrencias")
 public @Data class Ocorrencia {
 
     @Id
