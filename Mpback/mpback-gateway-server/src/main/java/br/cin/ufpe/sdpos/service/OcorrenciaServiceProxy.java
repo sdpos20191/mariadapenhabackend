@@ -13,6 +13,6 @@ import br.cin.ufpe.sdpos.model.OcorrenciaDtoInfo;
 public interface OcorrenciaServiceProxy {
 
 	@GetMapping(value = "/jpa/ocorrencias")
-	public @ResponseBody ResponseEntity<List<OcorrenciaDtoInfo>> listar();
+	public ResponseEntity<List<OcorrenciaDtoInfo>> listar();
 	
 }
