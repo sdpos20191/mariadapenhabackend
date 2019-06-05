@@ -16,7 +16,7 @@ import org.springframework.http.client.ClientHttpResponse;
 public class GatewayFallBack {
 
 	@Bean
-	public ZuulFallbackProvider zuulFallbackProvider(String route, Throwable cause) {
+	public ZuulFallbackProvider zuulFallbackProvider() {
 		
 	    return new ZuulFallbackProvider() {
 	    	
@@ -27,28 +27,20 @@ public class GatewayFallBack {
 
 	        @Override
 	        public ClientHttpResponse fallbackResponse() {
-	        	
-	        	HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-	    		
-	    		Error error = Error.builder()
-	    				.cause(cause)
-	    				.route(route)
-	    				.build();
-	        	
 	            return new ClientHttpResponse() {
-	                @Override
+	            	@Override
 	                public HttpStatus getStatusCode() throws IOException {
-	                    return status;
+	                    return HttpStatus.OK;
 	                }
 
 	                @Override
 	                public int getRawStatusCode() throws IOException {
-	                    return status.value();
+	                    return 200;
 	                }
 
 	                @Override
 	                public String getStatusText() throws IOException {
-	                    return status.toString();
+	                    return "OK";
 	                }
 
 	                @Override
@@ -58,7 +50,7 @@ public class GatewayFallBack {
 
 	                @Override
 	                public InputStream getBody() throws IOException {
-	                	return new ByteArrayInputStream(error.toJSONString().getBytes());
+	                    return new ByteArrayInputStream("fallback".getBytes());
 	                }
 
 	                @Override
