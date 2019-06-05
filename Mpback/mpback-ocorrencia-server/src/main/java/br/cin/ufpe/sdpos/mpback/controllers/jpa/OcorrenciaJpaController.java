@@ -18,7 +18,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-@RestController("/jpa/ocorrencias")
+@RestController
+@RequestMapping(ApisVersion.V1+"/jpa/ocorrencias")
 public class OcorrenciaJpaController {
 	
     @Autowired

@@ -14,7 +14,7 @@ import javax.ws.rs.Path;
 import java.util.List;
 
 @RestController
-@RequestMapping(ApisVersion.V1)
+@RequestMapping(ApisVersion.V1+"/mongo")
 public class DispositivoMongoController {
 
     @Autowired
