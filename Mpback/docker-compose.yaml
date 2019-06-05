@@ -6,6 +6,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "9090:9090"
+    restart: always
     networks:
       - mpback
     environment:
@@ -20,6 +21,7 @@ services:
     hostname: eureka
     ports:
       - "9091:9091"
+    restart: always
     networks:
       - mpback
   gateway:
@@ -29,6 +31,7 @@ services:
     depends_on:
       - config
       - eureka
+    restart: always
     ports:
       - "9094:9094"
     networks:
@@ -67,6 +70,7 @@ services:
       - config
     ports:
       - "9093:9093"
+    restart: always
     networks:
       - mpback
     environment:
