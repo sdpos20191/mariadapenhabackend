@@ -14,7 +14,7 @@ import javax.ws.rs.Path;
 import java.util.List;
 
 @RestController
-@Path(value = "/mongo/")
+@RequestMapping(ApisVersion.V1)
 public class OcorrenciaMongoController {
 
     @Autowired
