@@ -5,6 +5,7 @@ import br.cin.ufpe.sdpos.mpback.models.jpa.OcorrenciaDto;
 import br.cin.ufpe.sdpos.mpback.models.jpa.OcorrenciaEntity;
 import br.cin.ufpe.sdpos.mpback.repositories.jpa.OcorrenciaJPARepository;
 import br.cin.ufpe.sdpos.mpback.service.OcorrenciaService;
+import br.cin.ufpe.sdpos.mpback.models.ApisVersion;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
