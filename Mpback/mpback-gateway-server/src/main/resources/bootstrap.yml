@@ -1,14 +1,38 @@
+server:
+  port: 9094
+
 spring:
   application:
     name: gateway-server
-  cloud:
-    config:
-      fail-fast: true
-      retry:
-        initial-interval: 1000
-        max-interval: 2000
-        max-attempts: 100
-      discovery:
-        enabled: true
-        service-id: config-server
-      uri: http://config-server:9090
+
+eureka:
+  instance:
+    hostname: localhost
+    port: 9091
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 3000
+    
+zuul:
+  ignoredServices: '*'
+  host:
+    max-total-connections: 1000
+    max-per-route-connections: 1000
+  routes:
+    localhost:
+      path: /api/v1/**
+      sensitive-headers: null
+      serviceId: ocorrencia-server
+      strip-prefix: false
+    
+security:
+  basic:
+    enable: false   
+
+management:
+  security:
+    enabled: false 
