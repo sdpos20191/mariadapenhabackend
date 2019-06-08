@@ -2,6 +2,7 @@ package br.cin.ufpe.sdpos.mpback.controllers.mongo;
 
 import java.util.List;
 
+import br.cin.ufpe.sdpos.mpback.service.NotificacaoMessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,9 @@ public class NotificacaoMongoController {
 
     @Autowired
     private NotificacaoMongoDBRepository repository;
+
+    @Autowired
+    private NotificacaoMessageSender notificacaoMessageSender;
 
     @ApiOperation(value = "Listar Notificacoes",
             response = Notificacao.class,
@@ -66,7 +70,9 @@ public class NotificacaoMongoController {
     )
     @PostMapping(value="/notificacoes")
     public Notificacao salvar(@RequestBody Notificacao notificacao){
-        return repository.save(notificacao);
+        Notificacao salva = repository.save(notificacao);
+        notificacaoMessageSender.sendNotificacao(salva);
+        return salva;
     }
 
     @ApiOperation(value = "Atualizar Notificacao",

@@ -6,6 +6,7 @@
 Mpback/*/target
 Mpback/target
 Mpback/.idea
+*/*.iml
 Mpback/mpback-ocorrencia-server/.settings/org.eclipse.m2e.core.prefs
 Mpback/mpback-ocorrencia-dashboard-server/.project
 Mpback/mpback-config-server/.classpath
