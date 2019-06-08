@@ -2,6 +2,7 @@ package br.cin.ufpe.sdpos.mpback.service;
 
 import br.cin.ufpe.sdpos.mpback.config.RabbitConfig;
 import br.cin.ufpe.sdpos.mpback.models.mongo.Notificacao;
+import br.cin.ufpe.sdpos.mpback.models.mongo.Ocorrencia;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.Message;
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class NotificacaoMessageSender {
+public class OcorrenciaMessageSender {
 
     private final RabbitTemplate rabbitTemplate;
 
@@ -20,15 +21,15 @@ public class NotificacaoMessageSender {
     private ObjectMapper mapper;
 
     @Autowired
-    public NotificacaoMessageSender(RabbitTemplate rabbitTemplate){
+    public OcorrenciaMessageSender(RabbitTemplate rabbitTemplate){
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    public void sendNotificacao(Notificacao notificacao){
+    public void sendOcorrencia(Ocorrencia ocorrencia){
         try {
-            String jsonObj = mapper.writeValueAsString(notificacao);
+            String jsonObj = mapper.writeValueAsString(ocorrencia);
             Message message = MessageBuilder.withBody(jsonObj.getBytes()).setContentType(MessageProperties.CONTENT_TYPE_JSON).build();
-            this.rabbitTemplate.convertAndSend(RabbitConfig.QUEUE_NOTIFICACOES, message);
+            this.rabbitTemplate.convertAndSend(RabbitConfig.QUEUE_OCORRENCIAS, message);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

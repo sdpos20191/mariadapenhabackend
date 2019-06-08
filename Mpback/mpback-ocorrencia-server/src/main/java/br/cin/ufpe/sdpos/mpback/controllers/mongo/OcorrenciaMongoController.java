@@ -2,6 +2,7 @@ package br.cin.ufpe.sdpos.mpback.controllers.mongo;
 
 import java.util.List;
 
+import br.cin.ufpe.sdpos.mpback.service.OcorrenciaMessageSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,9 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @RequestMapping(ApisVersion.V1)
 public class OcorrenciaMongoController {
+
+    @Autowired
+    private OcorrenciaMessageSender ocorrenciaMessageSender;
 
     @Autowired
     private OcorrenciaMongoDBRepository repository;
@@ -63,7 +67,9 @@ public class OcorrenciaMongoController {
     )
     @PostMapping(value="/ocorrencias")
     public Ocorrencia salvar(@RequestBody Ocorrencia ocorrencia){
-        return repository.save(ocorrencia);
+        Ocorrencia saved = repository.save(ocorrencia);
+        ocorrenciaMessageSender.sendOcorrencia(saved);
+        return saved;
     }
 
     @ApiOperation(value = "Atualizar Ocorrencia",
