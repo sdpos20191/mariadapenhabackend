@@ -8,5 +8,6 @@ COPY --from=build /usr/src/app/target/mpback-ocorrencia-server.jar /usr/app/mpba
 WORKDIR /usr/app/
 COPY sleepEntry.sh /usr/app/sleepEntry.sh
 RUN chmod 777 /usr/app/sleepEntry.sh
+RUN apk add curl
 EXPOSE 9093
-ENTRYPOINT ["/bin/sh", "/usr/app/sleepEntry.sh", "40", "/usr/app/mpback-ocorrencia-server.jar"]
+ENTRYPOINT ["/bin/sh", "/usr/app/sleepEntry.sh", "http://eureka-server:9091/health", "\"status\":\"UP\"}", "/usr/app/mpback-ocorrencia-server.jar"]
