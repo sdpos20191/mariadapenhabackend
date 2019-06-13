@@ -1,0 +1,2 @@
+To avoid any crlf conversion for files with correct eol.
+*.sh -crlf
