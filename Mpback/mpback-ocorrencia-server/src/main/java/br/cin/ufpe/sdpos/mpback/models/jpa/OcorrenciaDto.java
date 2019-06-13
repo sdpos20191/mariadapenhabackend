@@ -1,5 +1,6 @@
 package br.cin.ufpe.sdpos.mpback.models.jpa;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import br.cin.ufpe.sdpos.mpback.models.common.Status;
@@ -16,8 +17,8 @@ public class OcorrenciaDto {
 	@Data
 	public static class LocalizacaoDto {
 		private Long id;
-		private long latitude;
-		private long longitude;
+		private BigDecimal latitude;
+		private BigDecimal longitude;
 	}
 	
 	@Data
