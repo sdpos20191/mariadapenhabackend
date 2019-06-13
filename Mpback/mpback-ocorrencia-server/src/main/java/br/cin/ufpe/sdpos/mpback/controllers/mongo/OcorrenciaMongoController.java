@@ -72,17 +72,4 @@ public class OcorrenciaMongoController {
         return saved;
     }
 
-    @ApiOperation(value = "Atualizar Ocorrencia",
-            response = Ocorrencia.class,
-            notes = "Essa operacao atualiza uma ocorrencia.")
-    @ApiResponses(
-            @ApiResponse(code=200,
-                    message = "Retorna a instancia da Ocorrencia atualizada.",
-                    response = Ocorrencia.class)
-    )
-    @PutMapping(value = "/ocorrencias/{id}")
-    public Ocorrencia atualizar(@ApiParam @PathVariable("id") String id,
-                                @RequestBody Ocorrencia ocorrencia){
-        return repository.save(ocorrencia);
-    }
 }
