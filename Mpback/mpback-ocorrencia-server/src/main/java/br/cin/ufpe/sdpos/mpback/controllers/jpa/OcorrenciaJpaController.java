@@ -80,27 +80,4 @@ public class OcorrenciaJpaController {
 		return ResponseEntity.created(uri).build();
     }
 
-    @ApiOperation(value = "Atualizar Ocorrencia",
-            response = OcorrenciaEntity.class,
-            notes = "Essa operacao atualiza uma ocorrencia.")
-    @ApiResponses(
-            @ApiResponse(code=200,
-                    message = "Retorna a instancia da Ocorrencia atualizada.",
-                    response = OcorrenciaEntity.class)
-    )
-    @PutMapping(value = "/{id}")
-    public @ResponseBody ResponseEntity<Void> atualizar(@ApiParam @PathVariable("id") Long id,
-                                      @RequestBody OcorrenciaDto dto){
-    	
-    	// Estou com dúvida sobre o update. conversaro com o pessoal sobre essa regra de negócio.
-    	OcorrenciaEntity ocorrenciaBase = jpaRepository.findOne(id);
-    	dto.setId(ocorrenciaBase.getId());
-    	dto.getLocalizacaoDto().setId(ocorrenciaBase.getLocalizacao().getId());
-    	dto.getDispositivoDto().setId(ocorrenciaBase.getDispositivo().getId());
-    	dto.getDispositivoDto().getAtualDto().setId(ocorrenciaBase.getDispositivo().getAtual().getId());
-    	
-    	OcorrenciaEntity ocorrencia = mapeador.getInstancia().map(dto, OcorrenciaEntity.class);
-        ocorrenciaService.save(ocorrencia);
-        return ResponseEntity.noContent().build();
-    }
 }

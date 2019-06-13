@@ -54,7 +54,6 @@ public class MapeadorOcorrencia extends CustomMapper<OcorrenciaEntity, Ocorrenci
 	
 	@Override
 	public void mapBtoA(OcorrenciaDto dto, OcorrenciaEntity ocorrencia, MappingContext context) {
-		ocorrencia.setId(dto.getId());
 		ocorrencia.setDataHora(new Date());
 		
 		ocorrencia.setLocalizacao(criarLocalizacaoEntity(dto.getLocalizacaoDto()));
@@ -71,7 +70,6 @@ public class MapeadorOcorrencia extends CustomMapper<OcorrenciaEntity, Ocorrenci
 	
 	private LocalizacaoEntity criarLocalizacaoEntity(OcorrenciaDto.LocalizacaoDto dto) {
 		LocalizacaoEntity localizacao = new LocalizacaoEntity();
-		localizacao.setId(dto.getId());
 		localizacao.setLatitude(dto.getLatitude());
 		localizacao.setLongitude(dto.getLongitude());
 		localizacao.setDataHora(new Date());
@@ -82,7 +80,6 @@ public class MapeadorOcorrencia extends CustomMapper<OcorrenciaEntity, Ocorrenci
 		List<NotificacaoEntity> notificacoes = new ArrayList<NotificacaoEntity>();
 		for (OcorrenciaDto.NotificacaoDto dto : dtos) {
 			NotificacaoEntity notificacao = new NotificacaoEntity();
-			notificacao.setId(dto.getId());
 			notificacao.setStatus(dto.getStatus());
 			notificacao.setDataHora(new Date());
 			notificacoes.add(notificacao);
