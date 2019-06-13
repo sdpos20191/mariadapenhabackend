@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Document(collection = "localizacoes")
@@ -12,8 +13,8 @@ public class Localizacao {
 
     @Id
     private String id;
-    private long latitude;
-    private long longitude;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
     private Date dataHora;
 
 }
