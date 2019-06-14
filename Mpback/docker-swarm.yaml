@@ -67,7 +67,7 @@ services:
     networks:
       - mpback
   rabbitmq:
-    image: rabbitmq:3.7.15
+    image: rabbitmq:3.7.15-management-alpine
     ports:
       - "5672:5672"
       - "15672:15672"
