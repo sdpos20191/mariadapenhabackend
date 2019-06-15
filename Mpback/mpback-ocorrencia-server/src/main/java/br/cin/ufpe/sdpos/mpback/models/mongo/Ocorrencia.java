@@ -14,7 +14,7 @@ public @Data class Ocorrencia {
     private String id;
     private Localizacao localizacao;
     private Date dataHora;
-    private Dispositivo dispositivo;
+    private String idDispositivo;
     private List<Notificacao> notificaoes;
     
 }
