@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import br.cin.ufpe.sdpos.model.OcorrenciaDtoInfo;
 
-@FeignClient(name = "ocorrencia-server", url = "http://ocorrencia-server:9093")
+@FeignClient(value = "ocorrencia-server", url = "${feign.client.url.TestUrl}")
 public interface OcorrenciaServiceProxy {
 
 	@GetMapping(value = "/api/v1/ocorrencias")
