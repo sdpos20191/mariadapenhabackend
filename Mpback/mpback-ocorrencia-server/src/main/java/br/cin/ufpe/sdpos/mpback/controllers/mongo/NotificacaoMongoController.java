@@ -86,6 +86,7 @@ public class NotificacaoMongoController {
     @PutMapping(value = "/notificacoes/{id}")
     public Notificacao atualizar(@PathVariable("id") String id,
                                  @RequestBody Notificacao notificacao){
+    	notificacao.setId(id);
         return repository.save(notificacao);
     }
 }

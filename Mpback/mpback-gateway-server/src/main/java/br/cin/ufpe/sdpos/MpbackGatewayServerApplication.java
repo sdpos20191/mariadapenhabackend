@@ -15,7 +15,7 @@ import br.cin.ufpe.sdpos.service.OcorrenciaServiceProxy;
 @SpringBootApplication
 @EnableZuulProxy
 @EnableFeignClients
-//@EnableHystrixDashboard
+@EnableHystrixDashboard
 @EnableDiscoveryClient
 public class MpbackGatewayServerApplication {
 

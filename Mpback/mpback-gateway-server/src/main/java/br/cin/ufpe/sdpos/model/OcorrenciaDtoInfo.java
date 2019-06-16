@@ -12,7 +12,7 @@ public class OcorrenciaDtoInfo {
 	private String id; 
 	private LocalizacaoDto localizacaoDto;
 	private Date dataHora;
-	private DispositivoDto dispositivoDto;
+	private String idDispositivo;
 	private List<NotificacaoDto> notificacoesDto;
 	
 	@Data
@@ -21,14 +21,6 @@ public class OcorrenciaDtoInfo {
 		private BigDecimal latitude;
 		private BigDecimal longitude;
 		private Date dataHora;
-	}
-	
-	@Data
-	public static class DispositivoDto {
-		private String id;
-		private Date dataCadastro;
-		private LocalizacaoDto atualDto;
-		private List<NotificacaoDto> notificacoesDto;
 	}
 	
 	@Data

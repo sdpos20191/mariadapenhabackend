@@ -10,7 +10,6 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.Path;
 import java.util.List;
 
 @RestController
@@ -71,6 +70,7 @@ public class DispositivoMongoController {
     @PutMapping(value = "/dispositivos/{id}")
     public Dispositivo atualizar(@ApiParam @PathVariable("id") String id,
                                  @RequestBody Dispositivo dispositivo){
+    	dispositivo.setId(id);
         return repository.save(dispositivo);
     }
 }
