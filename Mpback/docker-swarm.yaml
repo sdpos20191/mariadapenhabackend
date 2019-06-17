@@ -66,6 +66,17 @@ services:
         condition: on-failure
     networks:
       - mpback
+  notification-service:
+    image: joaoaneto/mp-notification-service:latest
+    deploy:
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "9095:9095"
+    networks:
+      - mpback
+    env_file: './mp-notification-service.env'
+
   rabbitmq:
     image: rabbitmq:3.7.15-management-alpine
     ports:
@@ -79,6 +90,7 @@ services:
 #      RABBITMQ_DEFAULT_PASS: 123456
     networks:
       - mpback
+
 
 networks:
   mpback:
